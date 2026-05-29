@@ -20,7 +20,7 @@ class ApiController extends Controller
 
     public function clients()
     {
-        $clients = Client::all();
+        $clients = Client::paginate(10);
         return response()->json(
             [
                 'status' => 'ok',
