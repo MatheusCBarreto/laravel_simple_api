@@ -70,4 +70,23 @@ class ApiController extends Controller
             200
         );
     }
+
+    public function addClient(Request $request)
+    {
+
+        // create a new client
+        $client = new Client();
+        $client->name = $request->name;
+        $client->email = $request->email;
+        $client->save();
+
+        return response()->json(
+            [
+                'status' => 'ok',
+                'message' => 'Client added successfully',
+                'data' => $client,
+            ],
+            201
+        );
+    }
 }
